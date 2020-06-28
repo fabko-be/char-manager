@@ -1,0 +1,34 @@
+{
+  "name": "char-manager",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "scss": "node-sass --watch assets/scss -o assets/css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabquo/char-manager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fabquo/char-manager/issues"
+  },
+  "homepage": "https://github.com/fabquo/char-manager#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "node-sass": "^4.14.1",
+    "seve": "^0.10.0"
+  },
+  "devDependencies": {
+    "@becode/eslint-config": "^0.10.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-unicorn": "^20.1.0",
+    "prettier": "^2.0.5"
+  },
+  "description": ""
+}
