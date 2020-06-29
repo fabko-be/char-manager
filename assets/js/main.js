@@ -10,16 +10,16 @@ md.set({
 
 axios.defaults.baseURL = "https://character-database.becode.xyz";
 
-function charUpdate() {
-    const charEdit = {
-        // TODO: Change params to InnerHTML & check for the image upload
-        name: "Fabito",
-        shortDescription: "Axios rox ou p'tetre pas",
-        description: "Juste pour rire",
-        image: "",
-    };
-    return charEdit;
-}
+// function charUpdate() {
+//     const charEdit = {
+//         // TODO: Change params to InnerHTML & check for the image upload
+//         name: "Fabito",
+//         shortDescription: "Axios rox ou p'tetre pas",
+//         description: "Juste pour rire",
+//         image: "",
+//     };
+//     return charEdit;
+// }
 
 async function dataConsult() {
     try {
