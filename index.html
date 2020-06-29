@@ -6,15 +6,35 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!-- Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
     <title>Characters manager</title>
 </head>
-<body>
-<template id="tpl-test">
-    <h2 id="name"></h2>
-    <div id="desc"></div>
-</template>
-<div id="target"></div>
+<body class=".col-12">
+<div class="container-fluid h2 text-white text-center .col12" style="height: 200px; background-color: black;">Hello</div>
+<section class="container raw mt-3">
+    <input class="form-control cols-sm-1" type="text" placeholder="Search your character" aria-label="Search" id="searchbar">
+    <!-- <button type="button" class="btn btn-dark col-3 justify-content-center" id="searchbutton">Search</button> -->
+</section>
+<section class="container mt-5 pt-3 justify-content-center">
+    <template id="tpl-test">
+        <div class="card mb-4 box-shadow col-md-3 col-lg-3 col-12" style="width: 100%;">
+            <figure style="height: 100px">
+            <img src="..." class="card-img-top 100p100" alt="...">
+            </figure>
+            <div class="card-body">
+            <h5 class="card-title" style="height: 20px">Card title</h5>
+            <p class="card-text overflow-hidden" style ="height : 100px">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <div>
+                    <button type="button" class="btn btn-secondary mt-auto w-40 p-0 pl-1 pr-1">View</button>
+                    <button type="button" class="btn btn-secondary mt-auto w-40 p-0 pl-1 pr-1">Edit</button>
+                </div>
+        </div>
+      </div>
+    </template>
+<div id="target" class="row text-center"></div>
+<!-- row row-cols-lg-4 row-cols-md-4 row-cols-sd-1 row-cols-1 -->
+</section>
 
 <!-- Scripts -->
 <!-- CDN Axios for HTTP request-->

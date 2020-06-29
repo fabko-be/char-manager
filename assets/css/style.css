@@ -1,0 +1,17 @@
+.gap10 {
+  grid-gap: 10px; }
+
+.card-img-top {
+  margin-top: 10px;
+  max-width: 100px;
+  height: 100px;
+  align-self: center; }
+
+.col {
+  grid-gap: 50px; }
+
+body {
+  background-color: grey; }
+
+.card {
+  border-radius: 5px; }

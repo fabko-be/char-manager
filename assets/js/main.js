@@ -1,6 +1,7 @@
 const error = new Error(
     "Une erreur s'est produite pendant le traitement des données",
 );
+
 const md = new Remarkable();
 
 md.set({
@@ -32,7 +33,7 @@ async function dataConsult() {
 }
 
 async function dataSearchByName() {
-    const nameSearched = "Fabito";
+    const nameSearched = document.getElementById("searchbar").value;
     try {
         const recup = await axios.get(`/characters?name=${nameSearched}`);
         const data = recup.data;
