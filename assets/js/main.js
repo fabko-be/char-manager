@@ -43,8 +43,8 @@ async function dataSearchByName() {
     }
 }
 
-async function dataSearchByID() {
-    const selectedId = "72c93fa7-e118-4ae7-a95e-fa8fe23eea6b";
+async function dataSearchByID(charId) {
+    const selectedId = charId;
     try {
         const recup = await axios.get(`/characters/${selectedId}`);
         const data = recup.data;
@@ -62,10 +62,10 @@ async function dataPush() {
     }
 }
 
-async function dataDelete() {
+async function dataDelete(id) {
     try {
         // TODO: Change const selectedID to innerHTML input
-        const selectedId = "7586f983-f92c-4673-8352-8f7852ea0b9b";
+        const selectedId = id;
         await axios.delete(`/characters/${selectedId}`);
     } catch (e) {
         console.error(e);
