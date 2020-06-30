@@ -14,9 +14,9 @@ axios.defaults.baseURL = "https://character-database.becode.xyz";
 function charUpdate() {
     const charEdit = {
         // TODO: Change params to InnerHTML & check for the image upload
-        name : "name",
-        shortDescription : "shortDescription",
-        description : "description",
+        name : "",
+        shortDescription : "",
+        description : "",
         image : ""
     };
     return charEdit;
@@ -54,9 +54,9 @@ async function dataSearchByID(charId) {
     }
 }
 
-async function dataPush() {
+async function dataPush(char) {
     try {
-        await axios.post("/characters", await charUpdate(Fabito, qguqsdguiqsg, sqguinqsdfiu,_));
+        await axios.post("/characters", await char);
     } catch (e) {
         console.error(e);
     }

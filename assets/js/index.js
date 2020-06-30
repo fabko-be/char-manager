@@ -1,6 +1,7 @@
 // Affichage du tableau entier
 tableDisplay();
 
+
 async function tableDisplay() {
     const allChar = await dataConsult();
     const template = await document.querySelector("#tpl-test").content;
@@ -79,10 +80,47 @@ Array.from(document.querySelectorAll(".viewButtonIndex")).forEach($btn =>
     }),
 );
 }
+document.getElementById("addCharConfirm").addEventListener("click", async () => {
+    const addChar = await charUpdate();
+    console.log(addChar)
+    addChar.name = await document.getElementById("addCharName").value;
+    addChar.shortDescription = await document.getElementById("addCharSDesc").value
+    addChar.description = await document.getElementById("addCharDescription").value
+    addChar.image = searchSrc()
+    
+    function searchSrc() {
+        imgSrc = document.getElementById("previewAddCharImg").src
+        let xp = /^data:.+\/(.+);base64,(.*)$/;
+        let matches = imgSrc.match(xp);
+        let data = matches[2];
+        return data;
+        
+    };
+    document.location.reload(true);
+    dataPush(addChar);
+    
+})
 
-// const viewButtonInt = setInterval(() => {
-//     if ($(".viewButton").length) {
-//         clearInterval(viewButtonInt);
-//     }
-//     500;
-// });
+
+let openFile = function(event) {
+    let xp = /^data:.+\/(.+);base64,(.*)$/;
+    let input = event.target;
+    let reader = new FileReader();
+
+    reader.onload = function(){
+    
+        let dataURL = reader.result;
+        let matches = dataURL.match(xp);
+        let ext = matches[1];
+        let data = matches[2];
+        console.log(data)
+        console.log(dataURL.match(xp))
+        let output = document.getElementById('previewAddCharImg');
+        output.src = `data:image/JPEG;base64,${data}`;
+        return data;
+        
+    };
+
+    reader.readAsDataURL(input.files[0]);
+    
+};

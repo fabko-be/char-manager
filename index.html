@@ -18,12 +18,12 @@
 <section name="cardTable" class="container mt-5 mx-auto justify-content-center">
     <template id="tpl-test">
         <div id="cardId" class="card mb-4 box-shadow col-md-4 col-lg-4 col-xl-4" style="width = 24rem">
-            <figure class = "mt-5" style="height: 100px, width: 100px">
-            <img src="..." class="card-img-top 100p100" alt="...">
+            <figure class = "mt-5" style="min-height: 100px, width: 100px">
+            <img src="..." class="card-img-top 100p100" alt="..." style="min-height: 100px;">
             </figure>
             <div class="card-body">
-            <h5 class="card-title text-black-50 font-weight-bolder" style="height: 20px">Card title</h5>
-            <p class="card-text overflow-hidden" style ="height : 100px">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <h5 class="card-title text-black-50 font-weight-bolder" style="min-height: 20px">Card title</h5>
+            <p class="card-text overflow-hidden" style ="min-height : 100px">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <div class="mb-3">
                     <button type="button" id = "" class="btn btn-info mt-auto w-40 p-0 pl-1 pr-1 viewButtonIndex" data-toggle="modal" data-target="#viewChar" >View</button>
                 </div>
@@ -63,20 +63,24 @@
     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <figure class = "col-6"style="height: 100px">
-                <img src="..." id = "viewCharImg" class="card-img-top 100p100" alt="...">
-            </figure>
+          <img src="" id = "previewAddCharImg" style="max-height: 100px;"></img>
             <h5 class="modal-title center font-weight-bold h2" id="viewCharName"></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           </button>
         </div>
-        <div class="modal-body"></div>
-        <div id="viewCharSDesc" class="ml-2"></div>
-        <div id="viewCharDesc" class="ml-2"></div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-info" data-dismiss="modal">Confirm</button>
-            <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-        </div>
+          <div class="modal-body"></div>
+          <label class="ml-5">Enter a name</label>
+          <input class="form-control w-50 ml-5" id="addCharName" class="ml-2"></input>
+          <label class="ml-5 mt-5">Write a short description</label>
+          <input id="addCharSDesc" class="ml-5 mr-5 form-control w-auto"></input>
+          <label class="ml-5 mt-5">Example textarea</label>
+          <textarea class="form-control w-auto mr-5 ml-5" id="addCharDescription" style="max-height: 150px; min-height: 150px;"></textarea>
+          <label class ="ml-5 mt-5">Chose a picture</label>
+          <input type="file" class="form-control-file ml-5 mb-5" id="addCharImage" onchange="openFile(event)">
+          <div class="modal-footer">
+              <button type="button" class="btn btn-info" data-dismiss="modal" id="addCharConfirm">Confirm</button>
+              <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+          </div>
       </div>
     </div>
   </div>
