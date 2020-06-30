@@ -56,7 +56,7 @@ async function dataSearchByID(charId) {
 
 async function dataPush(char) {
     try {
-        await axios.post("/characters", await char);
+        await axios.post("/characters",await char);
     } catch (e) {
         console.error(e);
     }
@@ -72,9 +72,9 @@ async function dataDelete(id) {
     }
 }
 
-async function dataUpdate() {
+async function dataUpdate(id) {
     try {
-        const selectedID = "72c93fa7-e118-4ae7-a95e-fa8fe23eea6b";
+        const selectedID = id;
         await axios.put(`/characters/${selectedID}`, charUpdate());
     } catch (e) {
         console.error(e);

@@ -49,7 +49,7 @@
         <div id="viewCharSDesc" class="ml-2"></div>
         <div id="viewCharDesc" class="ml-2"></div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-info" data-dismiss="modal">Edit</button>
+            <button type="button" class="btn btn-info" data-dismiss="modal" data-toggle="modal" data-target="#editChar">Edit</button>
             <button type="button" class="btn btn-danger delButton" data-dismiss="modal" data-toggle="modal" data-target="#delChar">Delete</button>
             <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
         </div>
@@ -57,13 +57,39 @@
     </div>
   </div>
 </section>
-<section name = "addCharModal" class="container">
+<section name = "editCharModal" class="container">
   <!-- Modal -->
+  <div class="modal fade" id="editChar">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <img class = "ml-4 mt-3" src="" id = "previewEditCharImg" style="max-height: 100px;"></img>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          </button>
+        </div>
+          <div class="modal-body"></div>
+          <label class="ml-5">Edit the name</label>
+          <input class="form-control w-50 ml-5" id="editCharName" class="ml-2"></input>
+          <label class="ml-5 mt-5">Modify the short description</label>
+          <input id="editCharSDesc" class="ml-5 mr-5 form-control w-auto"></input>
+          <label class="ml-5 mt-5">Modify the complete description (you can use Markdown)</label>
+          <textarea class="form-control w-auto mr-5 ml-5" id="editCharDescription" style="max-height: 150px; min-height: 150px;"></textarea>
+          <label class ="ml-5 mt-5">Chose another picture</label>
+          <input type="file" class="form-control-file ml-5 mb-5" id="editCharImage" accept="image/x-png,image/jpeg" onchange="openFile(event)">
+          <div class="modal-footer">
+              <button type="button" class="btn btn-info" data-dismiss="modal" id="editCharConfirm">Confirm</button>
+              <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section name = "addCharModal" class="container">
   <div class="modal fade" id="addChar">
     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
     <div class="modal-content">
         <div class="modal-header">
-          <img src="" id = "previewAddCharImg" style="max-height: 100px;"></img>
+          <img class = "ml-4 mt-3" src="" id = "previewAddCharImg" style="max-height: 100px;"></img>
             <h5 class="modal-title center font-weight-bold h2" id="viewCharName"></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           </button>
@@ -73,10 +99,10 @@
           <input class="form-control w-50 ml-5" id="addCharName" class="ml-2"></input>
           <label class="ml-5 mt-5">Write a short description</label>
           <input id="addCharSDesc" class="ml-5 mr-5 form-control w-auto"></input>
-          <label class="ml-5 mt-5">Example textarea</label>
+          <label class="ml-5 mt-5">Write a complete description (you can use Markdown)</label>
           <textarea class="form-control w-auto mr-5 ml-5" id="addCharDescription" style="max-height: 150px; min-height: 150px;"></textarea>
           <label class ="ml-5 mt-5">Chose a picture</label>
-          <input type="file" class="form-control-file ml-5 mb-5" id="addCharImage" onchange="openFile(event)">
+          <input type="file" class="form-control-file ml-5 mb-5" id="addCharImage" accept="image/x-png,image/jpeg" onchange="openFile(event)">
           <div class="modal-footer">
               <button type="button" class="btn btn-info" data-dismiss="modal" id="addCharConfirm">Confirm</button>
               <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>

@@ -53,6 +53,10 @@ Array.from(document.querySelectorAll(".viewButtonIndex")).forEach($btn =>
         document.querySelector("#delCharName",).innerHTML = `Delete ${selectChar.name} ?`;
         document.querySelector("#confirmDel",).innerHTML = `Please enter ${selectChar.id} to confirm`;
         document.querySelector(".delButton").addEventListener("click", () => {document.getElementById("delInputCheck").value = "";})
+        document.querySelector("#editCharName").value = await selectChar.name;
+        document.querySelector("#editCharSDesc").value = await selectChar.shortDescription;
+        document.querySelector("#editCharDescription").value = await selectChar.description;
+        document.get("#previewEditCharImg").src = await selectChar.image;
         document.querySelector("#delConfirm").addEventListener("click", () => {
                 const closeModal = document.querySelector("#delConfirm");
                 closeModal.removeAttribute("data-dismiss");
@@ -96,9 +100,11 @@ document.getElementById("addCharConfirm").addEventListener("click", async () => 
         return data;
         
     };
-    document.location.reload(true);
-    dataPush(addChar);
-    
+
+    dataPush(await addChar);
+    setTimeout(function(){
+        window.location.reload(1);
+     }, 3000);
 })
 
 
@@ -116,6 +122,7 @@ let openFile = function(event) {
         console.log(data)
         console.log(dataURL.match(xp))
         let output = document.getElementById('previewAddCharImg');
+        document.getElementById("previewEditCharImg").src = `data:image/JPEG;base64,${data}`;
         output.src = `data:image/JPEG;base64,${data}`;
         return data;
         
