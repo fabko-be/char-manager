@@ -56,7 +56,8 @@ Array.from(document.querySelectorAll(".viewButtonIndex")).forEach($btn =>
         document.querySelector("#editCharName").value = await selectChar.name;
         document.querySelector("#editCharSDesc").value = await selectChar.shortDescription;
         document.querySelector("#editCharDescription").value = await selectChar.description;
-        document.get("#previewEditCharImg").src = await selectChar.image;
+        document.querySelector(".divIdEdit").id = await selectChar.id;
+        document.querySelector("#previewEditCharImg").src = `data:image/JPEG;base64,${await selectChar.image}`;
         document.querySelector("#delConfirm").addEventListener("click", () => {
                 const closeModal = document.querySelector("#delConfirm");
                 closeModal.removeAttribute("data-dismiss");
