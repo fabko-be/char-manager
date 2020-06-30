@@ -2,29 +2,30 @@
 tableDisplay();
 
 async function tableDisplay() {
-    const test = await dataConsult();
+    const allChar = await dataConsult();
     const template = await document.querySelector("#tpl-test").content;
 
-    for (const element of test) {
+    for (const element of allChar) {
         const clone = template.cloneNode(true);
 
         clone.querySelector(".card-title").innerHTML = await element.name;
         clone.querySelector(".card-text",).innerHTML = await element.shortDescription;
         clone.querySelector(".card-img-top",).src = `data:image/JPEG;base64,${await element.image}`;
-        clone.querySelector(".viewButton").id = await element.id;
+        clone.querySelector(".viewButtonIndex").id = await element.id;
         document.querySelector("#target").appendChild(clone);
+        refreshViewButton()
     }
 
     document.querySelector("#searchbar").addEventListener("keyup", async () => {
         document.querySelector("#target").innerHTML = "";
         let persoArray = [];
-        const test = await dataConsult();
-        persoArray = await test;
+        const recupData = await dataConsult();
+        persoArray = await recupData;
 
         const template = await document.querySelector("#tpl-test").content;
         const searched = document.querySelector("#searchbar").value;
         for (const element of persoArray) {
-            const nameRecup = element.name;
+               const nameRecup = element.name;
 
             if (nameRecup.toLowerCase().includes(searched.toLowerCase())) {
                 const clone = template.cloneNode(true);
@@ -32,62 +33,51 @@ async function tableDisplay() {
                 clone.querySelector(".card-title").innerHTML = await element.name;
                 clone.querySelector(".card-text").innerHTML = await element.shortDescription;
                 clone.querySelector(".card-img-top",).src = `data:image/JPEG;base64,${await element.image}`;
-                clone.querySelector(".viewButton").id = element.id;
+                clone.querySelector(".viewButtonIndex").id = await element.id;
                 document.querySelector("#target").appendChild(clone);
+                refreshViewButton()
             }
         }
     });
-    Array.from(document.querySelectorAll(".viewButton")).forEach($btn =>
-        $btn.addEventListener("click", async () => {
-            const test = await dataSearchByID($btn.id);
-            document.querySelector("#viewCharName").innerHTML = await test.name;
-            document.querySelector(
-                "#viewCharImg",
-            ).src = `data:image/JPEG;base64,${await test.image}`;
-            document.querySelector("#viewCharSDesc").innerHTML = `<strong>Short description :</strong><br> ${await test.shortDescription}`
-            document.querySelector("#viewCharDesc").innerHTML = `<strong>Complete description :</strong> ${await md.render(
-                test.description,
-            )}`;
-            document.querySelector(
-                "#delCharName",
-            ).innerHTML = `Delete ${test.name} ?`;
-            document.querySelector(
-                "#confirmDel",
-            ).innerHTML = `Please enter ${test.id} to confirm`;
-            console.log($btn.id);
-            document
-                .querySelector(".delButton").addEventListener("click", () => {
-                    document.getElementById("delInputCheck").value = "";
-                })
-            document
-                .querySelector("#delConfirm").addEventListener("click", () => {
-                    // console.log("test");
-                    const closeModal = document.querySelector("#delConfirm");
-                    closeModal.removeAttribute("data-dismiss");
-                    const delCheck = document.querySelector("#delInputCheck").value;
-                    const confirmId = test.id;
-                    if (delCheck == confirmId) {
-                        dataDelete(test.id);
-                        document.querySelector("#confirmDel", ).innerHTML = `${test.name} has been deleted`;
-                        document.querySelector("#delConfirm").innerHTML = "Close";
-                        document.querySelector("#delConfirm").addEventListener("click", () => {
-                            const closeModal = document.querySelector("#delConfirm");
-                            closeModal.setAttribute("data-dismiss", "modal");
-                        })
+}
+function refreshViewButton(){
+Array.from(document.querySelectorAll(".viewButtonIndex")).forEach($btn =>
+    $btn.addEventListener("click", async () => {
+        const selectChar = await dataSearchByID($btn.id);
 
-                        document.querySelector("#delConfirm").addEventListener("click", () => {
-                            document.querySelector("#target").innerHTML = "";
-                            document.querySelector("#delConfirm").innerHTML = "Delete";
-                            tableDisplay()
-                            // document.location.reload(true);
-                        });
+        document.querySelector("#viewCharName").innerHTML = await selectChar.name;
+        document.querySelector("#viewCharImg").src = `data:image/JPEG;base64,${await selectChar.image}`;
+        document.querySelector("#viewCharSDesc").innerHTML = `<strong>Short description :</strong><br> ${await selectChar.shortDescription}`
+        document.querySelector("#viewCharDesc").innerHTML = `<strong>Complete description :</strong> ${await md.render(selectChar.description)}`;
+        document.querySelector("#delCharName",).innerHTML = `Delete ${selectChar.name} ?`;
+        document.querySelector("#confirmDel",).innerHTML = `Please enter ${selectChar.id} to confirm`;
+        document.querySelector(".delButton").addEventListener("click", () => {document.getElementById("delInputCheck").value = "";})
+        document.querySelector("#delConfirm").addEventListener("click", () => {
+                const closeModal = document.querySelector("#delConfirm");
+                closeModal.removeAttribute("data-dismiss");
+                const delCheck = document.querySelector("#delInputCheck").value;
+                const confirmId = selectChar.id;
+                if (delCheck == confirmId) {
+                    dataDelete(selectChar.id);
+                    document.querySelector("#confirmDel", ).innerHTML = `${selectChar.name} has been deleted`;
+                    document.querySelector("#delConfirm").innerHTML = "Close";
+                    document.querySelector("#delConfirm").addEventListener("click", () => {
+                        const closeModal = document.querySelector("#delConfirm");
+                        closeModal.setAttribute("data-dismiss", "modal");
+                    })
 
-                    } else {
-                        document.querySelector("#confirmDel").innerHTML = `Please enter ${test.id} to confirm. Try again or cancel.`;
-                    }
-                });
-        }),
-    );
+                    document.querySelector("#delConfirm").addEventListener("click", () => {
+                        document.querySelector("#target").innerHTML = "";
+                        document.querySelector("#delConfirm").innerHTML = "Delete";
+                        tableDisplay()
+                        document.location.reload(true);
+                    });
+                } else {
+                    document.querySelector("#confirmDel").innerHTML = `Please enter ${selectChar.id} to confirm. Try again or cancel.`;
+                }
+            });
+    }),
+);
 }
 
 // const viewButtonInt = setInterval(() => {

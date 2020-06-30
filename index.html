@@ -12,26 +12,27 @@
 <body class=".col-12">
 <div class="container-fluid h2 text-white text-center .col12" style="height: 200px; background-color: black;">Hello</div>
 <section class="container raw mt-3">
-    <input class="form-control cols-sm-1" type="text" placeholder="Search your character" aria-label="Search" id="searchbar">
+    <input class="form-control col-sm-10 col-md-6 col-lg-6 float-left" type="text" placeholder="Search your character" aria-label="Search" id="searchbar">
+    <button type="button" class="btn btn-primary col-sm-2 col-md-2 col-lg-2 ml-5" data-toggle="modal" data-target="#addChar">Add new</button>
 </section>
-<section class="container mt-5 space-right2 mx-auto justify-content-center row">
+<section name="cardTable" class="container mt-5 mx-auto justify-content-center">
     <template id="tpl-test">
-        <div id="cardId" class="card mb-4 box-shadow col-md-3 col-lg-3 col-12">
-            <figure class = "mt-5" style="height: 100px">
+        <div id="cardId" class="card mb-4 box-shadow col-md-4 col-lg-4 col-xl-4" style="width = 24rem">
+            <figure class = "mt-5" style="height: 100px, width: 100px">
             <img src="..." class="card-img-top 100p100" alt="...">
             </figure>
             <div class="card-body">
             <h5 class="card-title text-black-50 font-weight-bolder" style="height: 20px">Card title</h5>
             <p class="card-text overflow-hidden" style ="height : 100px">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <div class="mb-3">
-                    <button type="button" id = "" class="btn btn-info mt-auto w-40 p-0 pl-1 pr-1 viewButton" data-toggle="modal" data-target="#viewChar" >View</button>
+                    <button type="button" id = "" class="btn btn-info mt-auto w-40 p-0 pl-1 pr-1 viewButtonIndex" data-toggle="modal" data-target="#viewChar" >View</button>
                 </div>
         </div>
       </div>
     </template>
 <div id="target" class="row text-center"></div>
 </section>
-<section class="container">
+<section name="viewCharModal" class="container">
   <!-- Modal -->
   <div class="modal fade" id="viewChar">
     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
@@ -50,6 +51,30 @@
         <div class="modal-footer">
             <button type="button" class="btn btn-info" data-dismiss="modal">Edit</button>
             <button type="button" class="btn btn-danger delButton" data-dismiss="modal" data-toggle="modal" data-target="#delChar">Delete</button>
+            <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section name = "addCharModal" class="container">
+  <!-- Modal -->
+  <div class="modal fade" id="addChar">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <figure class = "col-6"style="height: 100px">
+                <img src="..." id = "viewCharImg" class="card-img-top 100p100" alt="...">
+            </figure>
+            <h5 class="modal-title center font-weight-bold h2" id="viewCharName"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          </button>
+        </div>
+        <div class="modal-body"></div>
+        <div id="viewCharSDesc" class="ml-2"></div>
+        <div id="viewCharDesc" class="ml-2"></div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal">Confirm</button>
             <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
         </div>
       </div>
