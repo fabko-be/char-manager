@@ -11,35 +11,13 @@
     <title>Characters manager</title>
 </head>
 <body>
-<template id="tpl-test">
+<!-- <template id="tpl-test">
     <h2 id="name"></h2>
     <div id="desc"></div>
 </template>
-<div id="target"></div>
-<!-- 
- <!-- <div class="jumbotron" >
-    <div class="container" >
-        <h1 class="display-4">Hello, world!</h1>
-        <img src="" alt="">
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Edit</a>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Create</a>
-    </div>
-</div> -->
-  <!-- create -->
-<!-- <div class="jumbotron display " >
-    <div class="container" id="creation" >
-        <h1 class="display-4">Hello, world!</h1>
-            <div id="image">
+<div id="target"></div> -->
+ 
 
-            </div>
-        
-        
-        
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
         
          
     
@@ -77,23 +55,23 @@
           
           
           
-            <form>
+            <form onsubmit="result()">
                 <div class="form-group">
                   <label for="formGroupExampleInput">Name</label>
-                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your name avatar" value="">
+                  <input type="text" class="form-control" id="formGroupExampleInput"  placeholder="Enter your name avatar" value="">
                 </div>
-                <div class="form-group">
+                <div class="form-group" onsubmit="result()">
                   <label for="formGroupExampleInput2">Short Description</label>
-                  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter a short description" value="">
+                  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter a short description" value="" >
                 </div>
               </form>
-              <form>
+              <form onsubmit="result()">
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Description</label>
-                    <textarea class="form-control description"  id="exampleFormControlTextarea1" rows="3" placeholder="Enter a  description you can write in Mardown " value=""></textarea>
+                    <input class="form-control description"  id="exampleFormControlTextarea1"  placeholder="Enter a  description you can write in Mardown " value="" ></input>
                   </div>
                 </form>
-            <div class="form-group">
+            <div class="form-group" onsubmit="result()">
               <label for="exampleFormControlFile1"></label>
               <input type="file" accept='image/png, image/jpeg' class="form-control-file" id="exampleFormControlFile1">
             </div>
@@ -101,13 +79,15 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="save" onclick="afficher()">Save changes</button>
+          <button type="submit" class="btn btn-primary" id="save" >Save changes</button>
         </div>
       </div>
     </div>
   </div>
   <!-- Script de base -->
+ 
  <script src="/assets/js/main.js"></script> 
- <script src="/assets/js/index.js"></script>
+<script src="/assets/js/index.js"></script>
+
 </body>
 </html>
