@@ -1,6 +1,5 @@
-.gap10{
-    grid-gap: 10px;
-}
+$enable-gradients: true;
+
 .card-img-top{
     margin-top : 10px;
     max-width: 100px;
@@ -8,14 +7,10 @@
     align-self: center;
 }
 
-.col{
-    grid-gap: 50px;
+.bglightgrad{
+    background: linear-gradient(to top, grey,rgb(145, 145, 145));
 }
 
-body{
-    background-color: grey;
-}
-
-.card{
-    border-radius: 10px;
+.bgdarkgrad{
+    background: linear-gradient(to bottom, #525252 ,#808080);
 }

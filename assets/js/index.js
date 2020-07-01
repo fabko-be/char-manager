@@ -1,173 +1,234 @@
-
+/* eslint-disable consistent-return */
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-shadow */
+/* eslint-disable no-undefined */
+/* eslint-disable no-undef */
 // Affichage du tableau entier
 tableDisplay();
-
 
 async function tableDisplay() {
     const allChar = await dataConsult();
     const template = await document.querySelector("#tpl-test").content;
+    const charDisplay = await allChar.sort(nameSort);
 
-    for (const element of allChar) {
+    function nameSort(a, b) {
+        const persoA = a.name.toUpperCase();
+        const persoB = b.name.toUpperCase();
+        let comparison = 0;
+        if (persoA > persoB) {
+            comparison = 1;
+        } else if (persoA < persoB) {
+            comparison = -1;
+        }
+        return comparison;
+    }
+
+    for (const element of charDisplay) {
         const clone = template.cloneNode(true);
 
-        clone.querySelector(".card-title").innerHTML = await element.name;
-        clone.querySelector(".card-text",).innerHTML = await element.shortDescription;
-        clone.querySelector(".card-img-top",).src = `data:image/JPEG;base64,${await element.image}`;
-        clone.querySelector(".viewButtonIndex").id = await element.id;
+        clone.querySelector(".card-title").innerHTML = element.name;
+        clone.querySelector(".card-text").innerHTML = element.shortDescription;
+        clone.querySelector(
+            ".card-img-top",
+        ).src = `data:image/JPEG;base64,${element.image}`;
+        clone.querySelector(".viewButtonIndex").id = element.id;
         document.querySelector("#target").appendChild(clone);
-        refreshViewButton()
+        refreshViewButton();
     }
 
     document.querySelector("#searchbar").addEventListener("keyup", async () => {
         document.querySelector("#target").innerHTML = "";
-        let persoArray = [];
-        const recupData = await dataConsult();
-        persoArray = await recupData;
 
         const template = await document.querySelector("#tpl-test").content;
         const searched = document.querySelector("#searchbar").value;
-        for (const element of persoArray) {
-               const nameRecup = element.name;
+        for (const element of charDisplay) {
+            const nameRecup = element.name;
 
             if (nameRecup.toLowerCase().includes(searched.toLowerCase())) {
                 const clone = template.cloneNode(true);
 
-                clone.querySelector(".card-title").innerHTML = await element.name;
-                clone.querySelector(".card-text").innerHTML = await element.shortDescription;
-                clone.querySelector(".card-img-top",).src = `data:image/JPEG;base64,${await element.image}`;
-                clone.querySelector(".viewButtonIndex").id = await element.id;
+                clone.querySelector(".card-title").innerHTML = element.name;
+                clone.querySelector(".card-text").innerHTML =
+                    element.shortDescription;
+                clone.querySelector(
+                    ".card-img-top",
+                ).src = `data:image/JPEG;base64,${element.image}`;
+                clone.querySelector(".viewButtonIndex").id = element.id;
                 document.querySelector("#target").appendChild(clone);
-                refreshViewButton()
+                refreshViewButton();
             }
         }
     });
 }
-function refreshViewButton(){
-Array.from(document.querySelectorAll(".viewButtonIndex")).forEach($btn =>
-    $btn.addEventListener("click", async () => {
-        const selectChar = await dataSearchByID($btn.id);
 
-        document.querySelector("#viewCharName").innerHTML = await selectChar.name;
-        document.querySelector("#viewCharImg").src = `data:image/JPEG;base64,${await selectChar.image}`;
-        document.querySelector("#viewCharSDesc").innerHTML = `<strong>Short description :</strong><br> ${await selectChar.shortDescription}`
-        document.querySelector("#viewCharDesc").innerHTML = `<strong>Complete description :</strong> ${await md.render(selectChar.description)}`;
-        document.querySelector("#delCharName",).innerHTML = `Delete ${selectChar.name} ?`;
-        document.querySelector("#confirmDel",).innerHTML = `Please enter ${selectChar.id} to confirm`;
-        document.querySelector(".delButton").addEventListener("click", () => {document.getElementById("delInputCheck").value = "";})
-        document.querySelector("#editCharName").value = await selectChar.name;
-        document.querySelector("#editCharSDesc").value = await selectChar.shortDescription;
-        document.querySelector("#editCharDescription").value = await selectChar.description;
-        document.querySelector(".divIdEdit").id = await selectChar.id;
-        document.querySelector("#previewEditCharImg").src = `data:image/JPEG;base64,${await selectChar.image}`;
-        document.querySelector("#delConfirm").addEventListener("click", () => {
-                const closeModal = document.querySelector("#delConfirm");
-                closeModal.removeAttribute("data-dismiss");
-                const delCheck = document.querySelector("#delInputCheck").value;
-                const confirmId = selectChar.id;
-                if (delCheck == confirmId) {
-                    dataDelete(selectChar.id);
-                    document.querySelector("#confirmDel", ).innerHTML = `${selectChar.name} has been deleted`;
-                    document.querySelector("#delConfirm").innerHTML = "Close";
-                    document.querySelector("#delConfirm").addEventListener("click", () => {
-                        const closeModal = document.querySelector("#delConfirm");
-                        closeModal.setAttribute("data-dismiss", "modal");
-                    })
+function refreshViewButton() {
+    Array.from(document.querySelectorAll(".viewButtonIndex")).forEach($btn =>
+        $btn.addEventListener("click", async () => {
+            const selectChar = await dataSearchByID($btn.id);
 
-                    document.querySelector("#delConfirm").addEventListener("click", () => {
-                        document.querySelector("#target").innerHTML = "";
-                        document.querySelector("#delConfirm").innerHTML = "Delete";
-                        tableDisplay()
-                        document.location.reload(true);
-                    });
-                } else {
-                    document.querySelector("#confirmDel").innerHTML = `Please enter ${selectChar.id} to confirm. Try again or cancel.`;
-                }
-            });
-    }),
-);
+            document.querySelector("#viewCharName").innerHTML = selectChar.name;
+            document.querySelector(
+                "#viewCharImg",
+            ).src = `data:image/JPEG;base64,${selectChar.image}`;
+            document.querySelector(
+                "#viewCharSDesc",
+            ).innerHTML = `${selectChar.shortDescription}`;
+            document.querySelector("#viewCharDesc").innerHTML = `${md.render(
+                selectChar.description,
+            )}`;
+            document.querySelector(
+                "#delCharName",
+            ).innerHTML = `Delete ${selectChar.name} ?`;
+            document.querySelector(
+                "#confirmDel",
+            ).innerHTML = `Please enter ${selectChar.id} to confirm`;
+            document
+                .querySelector(".delButton")
+                .addEventListener("click", () => {
+                    document.querySelector("#delInputCheck").value = "";
+                });
+            document.querySelector("#editCharName").value = selectChar.name;
+            document.querySelector("#editCharSDesc").value =
+                selectChar.shortDescription;
+            document.querySelector("#editCharDescription").value =
+                selectChar.description;
+            document.querySelector(".divIdEdit").id = selectChar.id;
+            document.querySelector(
+                "#previewEditCharImg",
+            ).src = `data:image/JPEG;base64,${selectChar.image}`;
+            document
+                .querySelector("#delConfirm")
+                .addEventListener("click", () => {
+                    const closeModal = document.querySelector("#delConfirm");
+                    closeModal.removeAttribute("data-dismiss");
+                    const delCheck = document.querySelector("#delInputCheck")
+                        .value;
+                    const confirmId = selectChar.id;
+                    if (delCheck === confirmId) {
+                        dataDelete(selectChar.id);
+                        document.querySelector(
+                            "#confirmDel",
+                        ).innerHTML = `${selectChar.name} has been deleted`;
+                        document.querySelector("#delConfirm").innerHTML =
+                            "Close";
+                        document
+                            .querySelector("#delConfirm")
+                            .addEventListener("click", () => {
+                                const closeModal = document.querySelector(
+                                    "#delConfirm",
+                                );
+                                closeModal.setAttribute(
+                                    "data-dismiss",
+                                    "modal",
+                                );
+                            });
+
+                        document
+                            .querySelector("#delConfirm")
+                            .addEventListener("click", () => {
+                                document.querySelector("#target").innerHTML =
+                                    "";
+                                document.querySelector(
+                                    "#delConfirm",
+                                ).innerHTML = "Delete";
+                                tableDisplay();
+                                document.location.reload(true);
+                            });
+                    } else {
+                        document.querySelector(
+                            "#confirmDel",
+                        ).innerHTML = `Please enter ${selectChar.id} to confirm. Try again or cancel.`;
+                    }
+                });
+        }),
+    );
 }
-document.getElementById("addCharConfirm").addEventListener("click", async () => {
-    const addChar = await charUpdate();
-    console.log(addChar)
-    addChar.name = await document.getElementById("addCharName").value;
-    addChar.shortDescription = await document.getElementById("addCharSDesc").value
-    addChar.description = await document.getElementById("addCharDescription").value
-    addChar.image = searchSrc()
-    
-    function searchSrc() {
-        imgSrc = document.getElementById("previewAddCharImg").src
-        let xp = /^data:.+\/(.+);base64,(.*)$/;
-        let matches = imgSrc.match(xp);
-        if(matches != null){
-        let data = matches[2];
-        return data;
-    }else {
-        let data = "";
-        return data;
-    }
-    };
+document
+    .querySelector("#addCharConfirm")
+    .addEventListener("click", async () => {
+        const addChar = await charUpdate();
+        addChar.name = document.querySelector("#addCharName").value;
+        addChar.shortDescription = document.querySelector(
+            "#addCharSDesc",
+        ).value;
+        addChar.description = document.querySelector(
+            "#addCharDescription",
+        ).value;
+        addChar.image = searchSrc();
 
-    dataPush(await addChar);
-    setTimeout(function(){
-        window.location.reload(1);
-        cleanModal();
-     }, 1500);
-})
+        function searchSrc() {
+            imgSrc = document.querySelector("#previewAddCharImg").src;
+            const xp = /^data:.+\/(.+);base64,(.*)$/;
+            const matches = imgSrc.match(xp);
+            if (matches != null) {
+                const data = matches[2];
+                return data;
+            }
+            const data = "";
+            return data;
+        }
 
-document.getElementById("editCharConfirm").addEventListener("click", async () => {
-    const addChar = await charUpdate();
-    const charId = document.querySelector(".divIdEdit").id;
-    addChar.name = await document.getElementById("editCharName").value;
-    addChar.shortDescription = await document.getElementById("editCharSDesc").value
-    addChar.description = await document.getElementById("editCharDescription").value
-    addChar.image = searchSrc()
-    
-    function searchSrc() {
-        imgSrc = document.getElementById("previewEditCharImg").src
-        let xp = /^data:.+\/(.+);base64,(.*)$/;
-        let matches = imgSrc.match(xp);
-        if(matches != null){
-        let data = matches[2];
-        return data;
-    }else {
-        let data = "";
-        return data;
-    }
-    };
+        dataPush(await addChar);
+        setTimeout(() => {
+            window.location.reload(1);
+            cleanModal();
+        }, 1500);
+    });
 
-    dataUpdate(await charId,await addChar);
-    setTimeout(function(){
-        window.location.reload(1);
-        cleanModal();
-     }, 1500);
-})
+document
+    .querySelector("#editCharConfirm")
+    .addEventListener("click", async () => {
+        function searchSrc() {
+            imgSrc = document.querySelector("#previewEditCharImg").src;
+            const xp = /^data:.+\/(.+);base64,(.*)$/;
+            const matches = imgSrc.match(xp);
+            if (matches != null) {
+                const data = matches[2];
+                return data;
+            }
+            const data = "";
+            return data;
+        }
 
-let openFile = function(event) {
-    let xp = /^data:.+\/(.+);base64,(.*)$/;
-    let input = event.target;
-    let reader = new FileReader();
+        const addChar = await charUpdate();
+        const charId = document.querySelector(".divIdEdit").id;
+        addChar.name = document.querySelector("#editCharName").value;
+        addChar.shortDescription = document.querySelector(
+            "#editCharSDesc",
+        ).value;
+        addChar.description = document.querySelector(
+            "#editCharDescription",
+        ).value;
+        addChar.image = searchSrc();
 
-    reader.onload = function(){
-        let dataURL
+        dataUpdate(charId, addChar);
+        setTimeout(() => {
+            window.location.reload(1);
+            cleanModal();
+        }, 1500);
+    });
+
+const openFile = function (event) {
+    const xp = /^data:.+\/(.+);base64,(.*)$/;
+    const input = event.target;
+    const reader = new FileReader();
+
+    reader.onload = function () {
+        let dataURL;
         dataURL = reader.result;
-        if(dataURL != undefined)
-        {
-        let matches = dataURL.match(xp);
-        let ext = matches[1];
-        let data = matches[2];
-        console.log(data)
-        console.log(dataURL.match(xp))
-        let output = document.getElementById('previewAddCharImg');
-        document.getElementById("previewEditCharImg").src = `data:image/JPEG;base64,${data}`;
-        output.src = `data:image/JPEG;base64,${data}`;
-        return data;
-    } else {
-        document.getElementById("previewEditCharImg").src = "";
-        document.getElementById('previewAddCharImg').src = ""
-    }
-        
+        if (dataURL !== undefined) {
+            const matches = dataURL.match(xp);
+            const data = matches[2];
+            const output = document.querySelector("#previewAddCharImg");
+            document.querySelector(
+                "#previewEditCharImg",
+            ).src = `data:image/JPEG;base64,${data}`;
+            output.src = `data:image/JPEG;base64,${data}`;
+            return data;
+        }
+        document.querySelector("#previewEditCharImg").src = "";
+        document.querySelector("#previewAddCharImg").src = "";
     };
 
     reader.readAsDataURL(input.files[0]);
-    
 };
