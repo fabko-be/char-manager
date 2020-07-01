@@ -17,24 +17,26 @@
         Character's API discover</div>
     <section class="container mt-5">
         <div class="row justify-content-around">
-            <input class="form-control col-sm-8 col-md-5 col-lg-5" type="text" placeholder="Search your character"
+            <input class="form-control col-sm-12 col-md-5 col-lg-5 " type="text" placeholder="Search your character"
                 aria-label="Search" id="searchbar">
-            <button type="button" class="btn btn-success col-sm-1 col-md-2 col-lg-2 ml-2 font-weight-bolder"
+            <button type="button" class="btn btn-success col-sm-1 col-md-2 col-lg-2 font-weight-bolder "
                 data-toggle="modal" data-target="#addChar">Add new</button>
-            <button type="button" class="btn btn-info col-sm-1 col-md-2 col-lg-2 ml-2 font-weight-bolder"
+            <button type="button" class="btn btn-info col-sm-1 col-md-2 col-lg-2 font-weight-bolder "
                 onclick="window.location.reload()">Refresh</button>
         </div>
     </section>
     <section name="cardTable" class="container mt-5 mx-auto justify-content-center">
         <template id="tpl-test">
-            <div id="cardId" class="card mb-5 ml-2 mr-2 col-12 col-md-3 col-lg-3 col-xl-3 border-black bg-dark bgdarkgrad"
+            <div id="cardId" class="card mb-5 ml-2 mr-2 col-12 col-md-4 col-lg-3 col-xl-3 border-black bg-dark bgdarkgrad "
                 style="width = 24rem">
-                <figure class="mt-5" style="min-height: 100px, width: 100px">
-                    <img src="..." class="card-img-top rouded" alt="..." style="min-height: 100px;">
+                <div id="image" style="height: 100px;" class="mb-3">
+                <figure class="mt-5">
+                    <img src="..." class="card-img-top rouded" alt="..." style="height: 100px;">
                 </figure>
-                <div class="card-body">
-                    <h5 class="card-title text-light font-weight-bolder" style="min-height: 50px">Card title</h5>
-                    <p class="card-text overflow-hidden text-light" style="min-height : 100px">Some quick example text
+                </div>
+                <div class="card-body module mt-5">
+                    <h5 class="card-title text-light font-weight-bolder" style="min-height: 60px">Card title</h5>
+                    <p class="card-text overflow-hidden text-light line-coverage clamptext" style="height : 90px">Some quick example text
                         to build on the card title and make up the bulk of the card's content.</p>
                     <div class="mb-3">
                         <button type="button" id="" class="btn btn-info mt-auto w-100 p-0 pl-1 pr-1 viewButtonIndex"
@@ -80,7 +82,7 @@
                     <div class="modal-header container-fluid">
                         <div class="row w-100 justify-content-between">
                             <img class="ml-4 mt-3" src="" id="previewEditCharImg" style="max-height: 100px;"></img>
-                            <button type="button" class="btn btn-danger col-2 ml-5 mt-5 my-auto"
+                            <button type="button" class="btn btn-danger col-2 ml-5 mt-5 my-auto text-center"
                                 onclick="eraseImage()">delete image</button>
                         </div>
                     </div>

@@ -16,7 +16,6 @@ axios.defaults.baseURL = "https://character-database.becode.xyz";
 
 function charUpdate() {
     const charEdit = {
-        // TODO: Change params to InnerHTML & check for the image upload
         name: "",
         shortDescription: "",
         description: "",

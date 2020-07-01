@@ -137,7 +137,7 @@ function refreshViewButton() {
                     } else {
                         document.querySelector(
                             "#confirmDel",
-                        ).innerHTML = `Please enter ${selectChar.id} to confirm. Try again or cancel.`;
+                        ).innerHTML = `Please enter ${selectChar.id} to confirm. <strong>Try again or cancel.</strong>`;
                     }
                 });
         }),

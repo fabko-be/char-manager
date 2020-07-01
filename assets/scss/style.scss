@@ -14,3 +14,10 @@ $enable-gradients: true;
 .bgdarkgrad{
     background: linear-gradient(to bottom, #525252 ,#808080);
 }
+
+.clamptext {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+  }
