@@ -1,3 +1,4 @@
+
 // Affichage du tableau entier
 tableDisplay();
 
@@ -97,17 +98,49 @@ document.getElementById("addCharConfirm").addEventListener("click", async () => 
         imgSrc = document.getElementById("previewAddCharImg").src
         let xp = /^data:.+\/(.+);base64,(.*)$/;
         let matches = imgSrc.match(xp);
+        if(matches != null){
         let data = matches[2];
         return data;
-        
+    }else {
+        let data = "";
+        return data;
+    }
     };
 
     dataPush(await addChar);
     setTimeout(function(){
         window.location.reload(1);
-     }, 3000);
+        cleanModal();
+     }, 1500);
 })
 
+document.getElementById("editCharConfirm").addEventListener("click", async () => {
+    const addChar = await charUpdate();
+    const charId = document.querySelector(".divIdEdit").id;
+    addChar.name = await document.getElementById("editCharName").value;
+    addChar.shortDescription = await document.getElementById("editCharSDesc").value
+    addChar.description = await document.getElementById("editCharDescription").value
+    addChar.image = searchSrc()
+    
+    function searchSrc() {
+        imgSrc = document.getElementById("previewEditCharImg").src
+        let xp = /^data:.+\/(.+);base64,(.*)$/;
+        let matches = imgSrc.match(xp);
+        if(matches != null){
+        let data = matches[2];
+        return data;
+    }else {
+        let data = "";
+        return data;
+    }
+    };
+
+    dataUpdate(await charId,await addChar);
+    setTimeout(function(){
+        window.location.reload(1);
+        cleanModal();
+     }, 1500);
+})
 
 let openFile = function(event) {
     let xp = /^data:.+\/(.+);base64,(.*)$/;
@@ -115,8 +148,10 @@ let openFile = function(event) {
     let reader = new FileReader();
 
     reader.onload = function(){
-    
-        let dataURL = reader.result;
+        let dataURL
+        dataURL = reader.result;
+        if(dataURL != undefined)
+        {
         let matches = dataURL.match(xp);
         let ext = matches[1];
         let data = matches[2];
@@ -126,6 +161,10 @@ let openFile = function(event) {
         document.getElementById("previewEditCharImg").src = `data:image/JPEG;base64,${data}`;
         output.src = `data:image/JPEG;base64,${data}`;
         return data;
+    } else {
+        document.getElementById("previewEditCharImg").src = "";
+        document.getElementById('previewAddCharImg').src = ""
+    }
         
     };
 

@@ -72,15 +72,30 @@ async function dataDelete(id) {
     }
 }
 
-async function dataUpdate(id) {
+async function dataUpdate(id, char) {
     try {
         const selectedID = id;
-        await axios.put(`/characters/${selectedID}`, charUpdate());
+        await axios.put(`/characters/${selectedID}`, await char);
     } catch (e) {
         console.error(e);
     }
 }
 
+function cleanModal(){
+    document.getElementById("addCharName").value ="";
+    document.getElementById("addCharSDesc").value ="";
+    document.getElementById("addCharDescription").value = "";
+    document.getElementById("previewAddCharImg").src = "";
+    document.getElementById("editCharName").value ="";
+    document.getElementById("editCharSDesc").value ="";
+    document.getElementById("editCharDescription").value = "";
+    document.getElementById("previewEditCharImg").src = "";
+}
+
+function eraseImage(){
+    document.getElementById("previewEditCharImg").src = ""
+    document.getElementById("previewAddCharImg").src = ""
+}
 // dataConsult();
 // dataSearchByName();
 // dataSearchByID();

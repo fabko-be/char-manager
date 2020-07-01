@@ -10,14 +10,14 @@
     <title>Characters manager</title>
 </head>
 <body class=".col-12">
-<div class="container-fluid h2 text-white text-center .col12" style="height: 200px; background-color: black;">Hello</div>
-<section class="container raw mt-3">
-    <input class="form-control col-sm-10 col-md-6 col-lg-6 float-left" type="text" placeholder="Search your character" aria-label="Search" id="searchbar">
-    <button type="button" class="btn btn-primary col-sm-2 col-md-2 col-lg-2 ml-5" data-toggle="modal" data-target="#addChar">Add new</button>
+<div class="container-fluid h-50 py-3 h2 bg-dark text-white text-center .col12" style="height: 200px;">Character's API discover</div>
+<section class="row justify-content-center mt-3">
+    <input class="form-control col-sm-8 col-md-3 col-lg-3" type="text" placeholder="Search your character" aria-label="Search" id="searchbar">
+    <button type="button" class="btn btn-primary col-sm-2 col-md-2 col-lg-2 ml-5 font-weight-bolder" data-toggle="modal" data-target="#addChar">Add new</button>
 </section>
 <section name="cardTable" class="container mt-5 mx-auto justify-content-center">
     <template id="tpl-test">
-        <div id="cardId" class="card mb-4 box-shadow col-md-4 col-lg-4 col-xl-4" style="width = 24rem">
+        <div id="cardId" class="card mb-5 ml-2 mr-2 col-12 col-md-3 col-lg-3 col-xl-3 border-white" style="width = 24rem">
             <figure class = "mt-5" style="min-height: 100px, width: 100px">
             <img src="..." class="card-img-top 100p100" alt="..." style="min-height: 100px;">
             </figure>
@@ -25,12 +25,12 @@
             <h5 class="card-title text-black-50 font-weight-bolder" style="min-height: 20px">Card title</h5>
             <p class="card-text overflow-hidden" style ="min-height : 100px">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <div class="mb-3">
-                    <button type="button" id = "" class="btn btn-info mt-auto w-40 p-0 pl-1 pr-1 viewButtonIndex" data-toggle="modal" data-target="#viewChar" >View</button>
+                    <button type="button" id = "" class="btn btn-info mt-auto w-100 p-0 pl-1 pr-1 viewButtonIndex" data-toggle="modal" data-target="#viewChar" >View</button>
                 </div>
         </div>
       </div>
     </template>
-<div id="target" class="row text-center"></div>
+<div id="target" class="row text-center justify-content-around"></div>
 </section>
 <section name="viewCharModal" class="container">
   <!-- Modal -->
@@ -58,12 +58,12 @@
   </div>
 </section>
 <section name = "editCharModal" class="container">
-  <!-- Modal -->
   <div class="modal fade" id="editChar">
     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
     <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header flex-row">
           <img class = "ml-4 mt-3" src="" id = "previewEditCharImg" style="max-height: 100px;"></img>
+          <button type="button" class="btn btn-danger col-2 ml-5 mt-5" onclick="eraseImage()">delete image</button>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           </button>
         </div>
@@ -79,7 +79,7 @@
           <div class="modal-footer">
               <div class="divIdEdit" id=""></div>
               <button type="button" class="btn btn-info" data-dismiss="modal" id="editCharConfirm">Confirm</button>
-              <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-dark" data-dismiss="modal" onclick="cleanModal()">Close</button>
           </div>
       </div>
     </div>
@@ -91,6 +91,7 @@
     <div class="modal-content">
         <div class="modal-header">
           <img class = "ml-4 mt-3" src="" id = "previewAddCharImg" style="max-height: 100px;"></img>
+          <button type="button" class="btn btn-danger col-2 ml-5 mt-5" onclick="eraseImage()">delete image</button>
             <h5 class="modal-title center font-weight-bold h2" id="viewCharName"></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           </button>
@@ -106,7 +107,7 @@
           <input type="file" class="form-control-file ml-5 mb-5" id="addCharImage" accept="image/x-png,image/jpeg" onchange="openFile(event)">
           <div class="modal-footer">
               <button type="button" class="btn btn-info" data-dismiss="modal" id="addCharConfirm">Confirm</button>
-              <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-dark" data-dismiss="modal" onclick="cleanModal()">Close</button>
           </div>
       </div>
     </div>
