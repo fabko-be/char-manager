@@ -205,15 +205,19 @@ document.querySelector("#editCharConfirm").addEventListener("click", async () =>
 });
 
 const openFile = function (event) {
+
+
     const xp = /^data:.+\/(.+);base64,(.*)$/;
     const input = event.target;
     const reader = new FileReader();
+    const file = input.files[0]
+    const fileSize = file.size
+
+    if (fileSize < (1024*500)){
 
     reader.onload = function () {
-
         let dataURL;
         dataURL = reader.result;
-
         if (dataURL !== undefined) {
             const matches = dataURL.match(xp);
             const data = matches[2];
@@ -231,5 +235,7 @@ const openFile = function (event) {
     };
 
     reader.readAsDataURL(input.files[0]);
-
+} else {
+    alert("Image is to big ! Can't be no more than 500kb")
+}
 };
