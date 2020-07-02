@@ -39,7 +39,7 @@ Team 11 :
 
   [![remarkable](./assets/images/remarkable.ico)](https://remarkableapp.github.io/) ***Remarkable Markdown editor***
   
-[![postman](./assets/images/postman.ico)](https://remarkableapp.github.io/) ***Postman***
+[![postman](./assets/images/postman.ico)](https://www.postman.com/downloads/) ***Postman***
 
 ***
 
