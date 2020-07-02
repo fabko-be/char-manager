@@ -36,7 +36,7 @@ async function tableDisplay() {
         clone.querySelector(".card-text").innerHTML = element.shortDescription;
         
         if(element.image === ""){
-            clone.querySelector(".card-img-top",).src = `/assets/images/noimage.png`;
+            clone.querySelector(".card-img-top",).src = `./assets/images/noimage.png`;
         } else {
             clone.querySelector(".card-img-top",).src = `data:image/JPEG;base64,${element.image}`;
         }
@@ -79,7 +79,7 @@ function refreshViewButton() {
 
             document.querySelector("#viewCharName").innerHTML = selectChar.name;
             if(selectChar.image === ""){
-                document.querySelector("#viewCharImg",).src = `/assets/images/noimage.png`;
+                document.querySelector("#viewCharImg",).src = `./assets/images/noimage.png`;
             } else {
                 document.querySelector("#viewCharImg",).src = `data:image/JPEG;base64,${selectChar.image}`;
             }
@@ -100,7 +100,7 @@ function refreshViewButton() {
             document.querySelector(".divIdEdit").id = selectChar.id;
             
             if(selectChar.image === ""){
-                document.querySelector("#previewEditCharImg",).src = `/assets/images/noimage.png`;
+                document.querySelector("#previewEditCharImg",).src = `./assets/images/noimage.png`;
             } else {
                 document.querySelector("#previewEditCharImg",).src = `data:image/JPEG;base64,${selectChar.image}`;
             }
