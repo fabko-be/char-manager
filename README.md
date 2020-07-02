@@ -34,11 +34,16 @@ Team 11 :
 ### Tips used for this project :
 
 [![bootsrap](./assets/images/bootstrap.ico)](https://getbootstrap.com/)  ***Bootstrap*** 
-[![axios](./assets/images/axios.ico)](https://stackoverflow.com/questions/41938718/how-to-download-files-using-axios) ***Axios*** 
-[![remarkable](./assets/images/remarkable.ico)](https://remarkableapp.github.io/) ***Remarkable Markdown editor***
+
+ [![axios](./assets/images/axios.ico)](https://stackoverflow.com/questions/41938718/how-to-download-files-using-axios) ***Axios***
+
+  [![remarkable](./assets/images/remarkable.ico)](https://remarkableapp.github.io/) ***Remarkable Markdown editor***
+  
+[![postman](./assets/images/postman.ico)](https://remarkableapp.github.io/) ***Postman***
 
 ***
 
+#### ALOTTED TIME : 5days
 
 
 
