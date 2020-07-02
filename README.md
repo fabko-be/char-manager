@@ -31,7 +31,8 @@ Team 11 :
 
 ### Technologies used for this project :
 
-[![bootsrap](./assets/images/bootstrap.jpeg)](https://getbootstrap.com/)
+[![bootsrap](./assets/images/bootstrap.ico)](https://getbootstrap.com/)
+[![axios](./assets/images/axios.ico)](https://getbootstrap.com/)
 
 ***
 
