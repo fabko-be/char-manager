@@ -61,7 +61,11 @@ async function tableDisplay() {
 
                 clone.querySelector(".card-title").innerHTML = element.name;
                 clone.querySelector(".card-text").innerHTML =element.shortDescription;
-                clone.querySelector(".card-img-top",).src = `data:image/JPEG;base64,${element.image}`;
+                if(element.image === ""){
+                    clone.querySelector(".card-img-top",).src = `./assets/images/noimage.png`;
+                } else {
+                    clone.querySelector(".card-img-top",).src = `data:image/JPEG;base64,${element.image}`;
+                }
                 clone.querySelector(".viewButtonIndex").id = element.id;
                 document.querySelector("#target").appendChild(clone);
                 refreshViewButton();
