@@ -1,7 +1,7 @@
 ### character Manager
 
 Create a dashboard of characters
-you can display edit or remove them.
+you can display edit or remove.
 
 ***
 
