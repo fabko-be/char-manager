@@ -1,3 +1,5 @@
+# possibilité de README 
+
 ### character Manager
 
 Create a dashboard of characters
@@ -29,10 +31,11 @@ Team 11 :
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
 
-### Technologies used for this project :
+### Tips used for this project :
 
-[![bootsrap](./assets/images/bootstrap.ico)](https://getbootstrap.com/)
-[![axios](./assets/images/axios.ico)](https://getbootstrap.com/)
+[![bootsrap](./assets/images/bootstrap.ico)](https://getbootstrap.com/)  ***Bootstrap*** 
+[![axios](./assets/images/axios.ico)](https://stackoverflow.com/questions/41938718/how-to-download-files-using-axios) ***Axios*** 
+[![remarkable](./assets/images/remarkable.ico)](https://remarkableapp.github.io/) ***Remarkable Markdown editor***
 
 ***
 
