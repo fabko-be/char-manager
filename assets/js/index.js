@@ -34,7 +34,13 @@ async function tableDisplay() {
 
         clone.querySelector(".card-title").innerHTML = element.name;
         clone.querySelector(".card-text").innerHTML = element.shortDescription;
-        clone.querySelector(".card-img-top",).src = `data:image/JPEG;base64,${element.image}`;
+        
+        if(element.image === ""){
+            clone.querySelector(".card-img-top",).src = `/assets/images/noimage.png`;
+        } else {
+            clone.querySelector(".card-img-top",).src = `data:image/JPEG;base64,${element.image}`;
+        }
+
         clone.querySelector(".viewButtonIndex").id = element.id;
         document.querySelector("#target").appendChild(clone);
         refreshViewButton();
@@ -72,7 +78,11 @@ function refreshViewButton() {
             const selectChar = await dataSearchByID($btn.id);
 
             document.querySelector("#viewCharName").innerHTML = selectChar.name;
-            document.querySelector("#viewCharImg",).src = `data:image/JPEG;base64,${selectChar.image}`;
+            if(selectChar.image === ""){
+                document.querySelector("#viewCharImg",).src = `/assets/images/noimage.png`;
+            } else {
+                document.querySelector("#viewCharImg",).src = `data:image/JPEG;base64,${selectChar.image}`;
+            }
             document.querySelector("#viewCharSDesc",).innerHTML = `${selectChar.shortDescription}`;
             document.querySelector("#viewCharDesc").innerHTML = `${md.render(selectChar.description,)}`;
             document.querySelector("#delCharName",).innerHTML = `Delete ${selectChar.name} ?`;
@@ -88,7 +98,12 @@ function refreshViewButton() {
             document.querySelector("#editCharSDesc").value = selectChar.shortDescription;
             document.querySelector("#editCharDescription").value = selectChar.description;
             document.querySelector(".divIdEdit").id = selectChar.id;
-            document.querySelector("#previewEditCharImg",).src = `data:image/JPEG;base64,${selectChar.image}`;
+            
+            if(selectChar.image === ""){
+                document.querySelector("#previewEditCharImg",).src = `/assets/images/noimage.png`;
+            } else {
+                document.querySelector("#previewEditCharImg",).src = `data:image/JPEG;base64,${selectChar.image}`;
+            }
 
             document.querySelector("#delConfirm").addEventListener("click", () => {
 
