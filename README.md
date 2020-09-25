@@ -52,4 +52,4 @@ To make HTML / CSS design more easier and responsive.
 
 ## Result
 
-Click here to see [our Characters manager project](https://fabquo.github.io/char-manager/ "Characters manager Project")
+Click here to see [our Characters manager project](https://fabko-be.github.io/char-manager/ "Characters manager Project")
